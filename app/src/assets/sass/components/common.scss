@@ -1,0 +1,36 @@
+.slick-slider {
+  width: 100%;
+  padding: 0;
+  margin-bottom: 0;
+
+  .slick-list {
+    height: auto;
+  }
+
+  .slick-dots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    height: 40px;
+
+    li {
+      display: flex;
+      top: 0;
+      align-items: center;
+      height: 100%;
+
+      button {
+        border-color: $black;
+      }
+
+      &.slick-active {
+        button {
+          background-color: $black;
+          color: $white;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,264 @@
+/* ----------------------- External Font ----------------------- */
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: quote($font-name);
+    src: url($file-name+'.eot');
+    src: url($file-name+'.eot?#iefix') format('embedded-opentype'), url($file-name+'.woff') format('woff'),
+      url($file-name+'.ttf') format('truetype'), url($file-name+'.svg##{$font-name}') format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+/* ---------- Media Queries ---------- */
+@mixin mq($width, $type: min) {
+  @if map_has_key($break-points, $width) {
+    $width: map_get($break-points, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+@mixin mqo($orientation: landscape) {
+  @media screen and (orientation: $orientation) {
+    @content;
+  }
+}
+
+/* ---------- Placeholder Style ---------- */
+@mixin placeholder($color) {
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &::-moz-placeholder {
+    color: $color;
+  }
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+/* ---------- Center an element (absolute) ---------- */
+@mixin center-absolute($position) {
+  position: absolute;
+
+  @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  } @else if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  } @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  } @else if $position == 'none' {
+    position: relative;
+    top: auto;
+    left: auto;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
+
+/* ---------- Center an element (relative) ---------- */
+@mixin center-relative($position) {
+  position: relative;
+
+  @if $position == 'vertical' {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  } @else if $position == 'horizontal' {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  } @else if $position == 'both' {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  } @else if $position == 'bottom' {
+    top: 100%;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+}
+
+/* ---------- Animation Mixin Setup ---------- */
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+/* ---------- Gradient ---------- */
+@mixin background-gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+
+  @if $orientation == 'vertical' {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation == 'horizontal' {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}
+
+/* ----------------------- Rounded ----------------------- */
+@mixin rounded($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+/* ----------------------- Opacity ----------------------- */
+@mixin opacity($opacity: 0.5) {
+  -moz-opacity: $opacity;
+  -khtml-opacity: $opacity;
+  -webkit-opacity: $opacity;
+  opacity: $opacity;
+  $opperc: $opacity * 100;
+  -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=' + $opperc + ')';
+  filter: alpha(opacity=$opperc);
+}
+
+/* ----------------------- Transform ----------------------- */
+@mixin transform($arguments) {
+  -webkit-transform: $arguments;
+  -moz-transform: $arguments;
+  -o-transform: $arguments;
+  -ms-transform: $arguments;
+  transform: $arguments;
+}
+
+/* -------------------- Transform Delay -------------------- */
+@mixin transform-delay($time) {
+  -webkit-transition-delay: $time;
+  -moz-transition-delay: $time;
+  -o-transition-delay: $time;
+  -ms-transition-delay: $time;
+  transition-delay: $time;
+}
+
+/* ----------------------- Rotation ----------------------- */
+@mixin rotation($deg: 5deg) {
+  @include transform(rotate($deg));
+}
+
+/* ----------------------- Scale ----------------------- */
+@mixin scale($ratio: 1.5) {
+  @include transform(scale($ratio));
+}
+
+/* -------------------- Scale Horizontal -------------------- */
+@mixin scaleH($x: 1.5, $y: 1) {
+  @include transform(scale($x, $y));
+}
+
+/* ------------------ Transform Origin ------------------ */
+@mixin transform-origin($origin) {
+  -moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+/* ----------------------- Transition ----------------------- */
+@mixin transition($duration: 0.2s, $ease: ease-in-out) {
+  -webkit-transition: all $duration $ease;
+  -moz-transition: all $duration $ease;
+  -o-transition: all $duration $ease;
+  transition: all $duration $ease;
+}
+
+/* ------------------ Transition Specific ------------------ */
+@mixin transition-specific($attr: all, $duration: 0.2s, $ease: ease-out) {
+  -webkit-transition: $attr $duration $ease;
+  -moz-transition: $attr $duration $ease;
+  -o-transition: $attr $duration $ease;
+  transition: $attr $duration $ease;
+}
+
+/* ----------------------- Pseudo ----------------------- */
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+/* ----------------------- Filter ----------------------- */
+/* 
+    grayscale      ex: filter: grayscale(100%);
+    sepia          ex: filter: sepia(100%);
+    saturate       ex: filter: saturate(0%);
+    hue-rotate     ex: filter: hue-rotate(45deg);
+    invert         ex: filter: invert(100%);
+    brightness     ex: filter: brightness(15%);
+    contrast       ex: filter: contrast(200%);
+    blur           ex: filter: blur(2px);
+  */
+
+@mixin filter($filter-type, $filter-amount) {
+  -webkit-filter: $filter-type + unquote('(#{$filter-amount})');
+  -moz-filter: $filter-type + unquote('(#{$filter-amount})');
+  -ms-filter: $filter-type + unquote('(#{$filter-amount})');
+  -o-filter: $filter-type + unquote('(#{$filter-amount})');
+  filter: $filter-type + unquote('(#{$filter-amount})');
+}
+
+/* --------------------- Box Shadow --------------------- */
+@mixin box-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $alpha: 0.2) {
+  -webkit-box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
+  -moz-box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
+  box-shadow: $x-axis $y-axis $blur rgba(0, 0, 0, $alpha);
+}
+
+/* --------------------- Text Shadow --------------------- */
+@mixin text-shadow($hs: 1px, $vs: 1px, $blur: 2px, $color: rgba(0, 0, 0, 0.3)) {
+  -webkit-text-shadow: $hs $vs $blur $color;
+  -moz-text-shadow: $hs $vs $blur $color;
+  text-shadow: $hs $vs $blur $color;
+}

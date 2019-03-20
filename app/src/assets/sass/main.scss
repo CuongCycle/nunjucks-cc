@@ -1,0 +1,14 @@
+@import '../../../../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../../../../node_modules/slick-carousel/slick/slick.scss';
+@import 'variables.scss';
+@import 'mixins.scss';
+@import 'fonts.scss';
+@import 'reset.scss';
+
+@import './components/common.scss';
+@import './components/header.scss';
+@import './components/footer.scss';
+
+@import './pages/site-map.scss';
+@import './pages/home.scss';
+@import './pages/about-us.scss';

@@ -1,0 +1,5 @@
+.s-header {
+  @include box-shadow(0, 2px, 10px, 0.1);
+  text-align: center;
+  background: $white;
+}

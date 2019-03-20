@@ -1,0 +1,38 @@
+{% extends 'layouts/default.html' %} {% set title="Home Page" %} {% block app %}
+<div class="p-home">
+  {% import 'partials/header.html' as macroHeader %}
+  {{ macroHeader.header('') }}
+  <section class="s-section s-intro">
+    <div class="b-container b-intro">
+      <div class="b-head">
+        <h1><i class="icon icon-emo-happy"></i> What is NCC?</h1>
+      </div>
+      <div class="b-body">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam aut molestiae commodi tenetur, rerum eum
+          aliquam sunt, nihil provident cum ut odio tempore aperiam libero. Quas accusantium corporis explicabo tenetur.
+          <a href="about-us.html">read more...</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="s-section s-home">
+    <div class="b-container b-home">
+      <div class="b-head">
+        <h1><i class="icon icon-emo-happy"></i> How to use NCC?</h1>
+      </div>
+      <div class="b-body">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam aut molestiae commodi tenetur, rerum eum
+          aliquam sunt, nihil provident cum ut odio tempore aperiam libero. Quas accusantium corporis explicabo tenetur.
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam aut molestiae commodi tenetur, rerum eum
+          aliquam sunt, nihil provident cum ut odio tempore aperiam libero. Quas accusantium corporis explicabo tenetur.
+        </p>
+      </div>
+    </div>
+  </section>
+  {% include 'partials/footer.html' %}
+</div>
+{% endblock %}

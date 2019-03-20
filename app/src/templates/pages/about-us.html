@@ -1,0 +1,28 @@
+{% extends 'layouts/default.html' %} {% set title="About Us" %} {% block app %}
+<div class="p-about-us">
+  {% import 'partials/header.html' as macroHeader %}
+  {{ macroHeader.header('home.html') }}
+  <section class="s-section s-about-us">
+    <div class="b-container b-about-us">
+      <div class="b-head">
+        <h1><i class="icon icon-emo-happy"></i> About Nunjucks CC Boilerplate</h1>
+      </div>
+      <div class="b-body">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus aut aliquam pariatur rem velit ipsa fugit
+          et expedita reiciendis modi maxime neque praesentium fugiat nobis, aspernatur debitis quam totam veritatis!
+        </p>
+        <div class="my-slick">
+          <div class="my-slick-item">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+          <div class="my-slick-item">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. At amet iure fugiat doloremque quisquam quo
+            deserunt sunt quia id cum error earum perferendis est explicabo culpa incidunt, ullam cumque voluptas?
+          </div>
+          <div class="my-slick-item">Aspernatur debitis quam totam veritatis!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% include 'partials/footer.html' %}
+</div>
+{% endblock %}

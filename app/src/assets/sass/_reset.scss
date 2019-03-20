@@ -1,0 +1,405 @@
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font: 400 14px/22px 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: $default;
+}
+
+input,
+textarea {
+  @include placeholder($placeholder);
+}
+
+.unhappy {
+  @include placeholder($red);
+}
+
+table {
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 100%;
+
+  tr {
+    padding: 0;
+    margin: 0;
+  }
+
+  th {
+    font-style: normal;
+    padding: 0;
+    margin: 0;
+  }
+
+  td {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+address {
+  font-style: normal;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+input[type='text'],
+textarea {
+  @include transition(0.3s);
+  @include rounded(0);
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  border: 1px solid $input;
+  height: 45px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 45px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  background: transparent;
+
+  &.has-value {
+    border-color: $black;
+  }
+
+  &.unhappy {
+    border-color: $red;
+  }
+}
+
+textarea {
+  height: 77px;
+  padding-top: 12px;
+  line-height: 20px;
+}
+
+img {
+  max-width: 100%;
+  @include transition(0.3s);
+}
+
+a {
+  text-decoration: none;
+  color: $blue;
+  @include transition(0.3s);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    color: $blue;
+  }
+}
+
+p {
+  margin: 0 0 12px 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 22px;
+
+  &.is-large {
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+%clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+.row-fluid {
+  *zoom: 1;
+
+  &:before {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  [class*='span-'] {
+    display: block;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    &:first-child {
+      margin-left: 0 !important;
+    }
+  }
+
+  .no-gutter {
+    margin-left: 0 !important;
+  }
+
+  .pull-right {
+    float: right;
+  }
+
+  @for $i from 1 through 12 {
+    .span-#{$i} {
+      width: 100%;
+    }
+  }
+  @include mq('tablet') {
+    $default-gutter-px: 16;
+    $default-screen-px: 768;
+    $default-column-px: 49;
+    $default-column-perc: $default-column-px / $default-screen-px;
+    $default-gutter-perc: $default-gutter-px / $default-screen-px;
+    $default-column-gutter-perc: $default-column-perc + $default-gutter-perc;
+    @for $i from 1 through 12 {
+      .span-#{$i} {
+        width: percentage($default-column-perc + ($default-column-gutter-perc * ($i - 1)));
+      }
+    }
+    [class*='span'],
+    [class*='span'].has-gutter {
+      margin-left: percentage($default-gutter-perc);
+    }
+  }
+  @include mq('desktop') {
+    $default-gutter-px: 24;
+    $default-screen-px: 1236;
+    $default-column-px: 81;
+    $default-column-perc: $default-column-px / $default-screen-px;
+    $default-gutter-perc: $default-gutter-px / $default-screen-px;
+    $default-column-gutter-perc: $default-column-perc + $default-gutter-perc;
+    @for $i from 1 through 12 {
+      .span-#{$i} {
+        width: percentage($default-column-perc + ($default-column-gutter-perc * ($i - 1)));
+      }
+    }
+    [class*='span'],
+    [class*='span'].has-gutter {
+      margin-left: percentage($default-gutter-perc);
+    }
+  }
+}
+
+.mobile-hide {
+  display: none !important;
+}
+
+@include mq('tablet') {
+  .mobile-hide {
+    display: inherit !important;
+  }
+
+  .tablet-hide {
+    display: none !important;
+  }
+}
+@include mq('desktop') {
+  .mobile-hide {
+    display: inherit !important;
+  }
+
+  .tablet-hide {
+    display: inherit !important;
+  }
+
+  .desktop-hide {
+    display: none !important;
+  }
+}
+
+.s-section {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  @include mq('tablet') {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  @include mq('desktop') {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .b-container {
+    position: relative;
+    @extend %clearfix;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .b-head {
+      margin-bottom: 12px;
+    }
+
+    @include mq('tablet') {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    @include mq('desktop') {
+      max-width: 1400px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin: 0 auto;
+    }
+  }
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.sub-headline {
+  font-weight: 200;
+  margin: 0 0 12px 0;
+  padding: 0;
+  color: $heading;
+
+  strong {
+    font-weight: 700;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 38px;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+h4,
+h5,
+h6 {
+  font-size: 18px;
+  line-height: 22px;
+}
+
+button {
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn {
+  @include transition(0.3s);
+  @include rounded(0);
+  display: inline-block;
+  background-color: transparent;
+  padding: 14px 24px 16px;
+  font-size: 15px;
+  line-height: 20px;
+  color: $heading;
+  font-weight: 300;
+  min-width: 220px;
+  border: 1px solid $button;
+
+  &:hover {
+    text-decoration: none;
+    background-color: $heading;
+    color: $white;
+  }
+}
+
+@include mq('tablet') {
+  h1 {
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  h2 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  h3 {
+    font-size: 22px;
+    line-height: 28px;
+  }
+}
+
+@include mq('desktop') {
+  h1 {
+    font-size: 50px;
+    line-height: 60px;
+  }
+
+  h2 {
+    font-size: 30px;
+    line-height: 48px;
+  }
+
+  .btn {
+    padding: 24px 110px;
+    min-width: 0;
+  }
+
+  p {
+    &.is-large {
+      font-size: 16px;
+      line-height: 26px;
+    }
+  }
+
+  input[type='text'] {
+    height: 57px;
+    line-height: 57px;
+  }
+
+  textarea {
+    height: 97px;
+    padding-top: 18px;
+  }
+}

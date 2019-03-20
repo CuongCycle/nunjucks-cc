@@ -1,0 +1,24 @@
+.p-about-us {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.s-about-us {
+  flex: 1;
+
+  .slick-slider {
+    .slick-slide {
+      display: flex;
+      min-height: 200px;
+      justify-content: center;
+      align-items: center;
+
+      .my-slick-item {
+        max-width: 700px;
+        text-align: center;
+      }
+    }
+  }
+}

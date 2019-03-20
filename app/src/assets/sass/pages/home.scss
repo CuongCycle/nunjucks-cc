@@ -1,0 +1,14 @@
+.p-home {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.s-intro {
+  border-bottom: 1px dashed $white;
+}
+
+.s-home {
+  flex: 1;
+}

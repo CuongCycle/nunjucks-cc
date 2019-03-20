@@ -1,0 +1,25 @@
+.s-footer {
+  background: $light-grey;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  .b-container {
+    text-align: center;
+
+    @include mq('tablet') {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      text-align-last: left;
+
+      .b-head {
+        margin-bottom: 0;
+      }
+
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
+}

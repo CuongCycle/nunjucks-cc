@@ -1,0 +1,22 @@
+{% extends 'layouts/default.html' %} {% set title="Site Map" %} {% block app %}
+<div class="p-site-map">
+  <section class="s-section s-site-map">
+    <div class="b-container b-site-map">
+      <div class="b-head">
+        <div class="logo"><img src="assets/img/ncc-logo.png" alt="Nunjuckc CC" /></div>
+        <h1>{{ appName }}</h1>
+        <h2>Site Map</h2>
+      </div>
+      <div class="b-body">
+        <ul>
+          <li><a href="home.html">Home Page</a></li>
+          <li><a href="about-us.html">About us</a></li>
+        </ul>
+      </div>
+      <div class="b-foot">
+        <p>&copy; Copyright 2019 by CC</p>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

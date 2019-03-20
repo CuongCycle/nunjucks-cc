@@ -1,0 +1,15 @@
+{% macro header(linkBack='') %}
+<section class="s-section s-header">
+  <div class="b-header b-container">
+    <div class="b-head">
+      <h1>Welcome to Nunjucks CC</h1>
+    </div>
+    <div class="b-body">
+      <p>Let's start to make an awesome website!</p>
+      {% if linkBack %}
+      <p><a href="{{ linkBack }}">back to Home</a></p>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endmacro %}
